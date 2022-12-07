@@ -7,12 +7,14 @@ public class RubyController : MonoBehaviour
     public float speed = 3.0f;
 
     public int maxHealth = 5;
-    public float timeInvincible = 2.0f;
+
+    public GameObject projectilePrefab;
+
 
     public int health {  get { return currentHealth; } }
     public int currentHealth;
 
-
+    public float timeInvincible = 2.0f;
     bool isInvincible;
     float invincibleTimer;
 
@@ -29,6 +31,8 @@ public class RubyController : MonoBehaviour
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        
+
         currentHealth = maxHealth;
     }
 
@@ -55,7 +59,11 @@ public class RubyController : MonoBehaviour
             invincibleTimer -= Time.deltaTime;
             if (invincibleTimer < 0)
                 isInvincible = false;
+        }
 
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+            Launch();
         }
     }
 
@@ -72,7 +80,6 @@ public class RubyController : MonoBehaviour
     {
         if (amount < 0)
         {
-            animator.SetTrigger("Hit");
             if (isInvincible)
                 return;
 
