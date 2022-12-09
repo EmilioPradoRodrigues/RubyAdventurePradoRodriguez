@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthCollectible : MonoBehaviour
+class HealthCollectible : MonoBehaviour
 { 
- void OnTriggerEnter2(Collider2D other)  
+ public void OnTriggerEnter2(Collider2D other)  
  {
     RubyController controller = other.GetComponent<RubyController>();
 
